@@ -112,7 +112,7 @@ function Get-AzureServiceTag {
 
     if ($result.StatusCode -eq 200) {
         $ipAddresses = (($result.Content | ConvertFrom-Json).Values | Where-Object {
-            $_.Name -like 'AzureActiveDirectory'}).properties.addressPrefixes
+            $_.Name -like $ServiceTag}).properties.addressPrefixes
         return $ipAddresses
     }
     else {
